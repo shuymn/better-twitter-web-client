@@ -7,9 +7,7 @@ import TranslationButtonHider from './module/translation-button-hider';
  * @return {Promise}
  */
 function stop(features) {
-  return Promise.all(features.map((feature) => {
-    return feature.stop();
-  }));
+  return Promise.all(features.map(feature => feature.stop()));
 }
 
 /**
