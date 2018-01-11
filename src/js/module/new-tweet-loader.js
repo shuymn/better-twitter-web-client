@@ -74,6 +74,7 @@ export default class NewTweetLoader {
   static getPatterns() {
     return [
       /^https:\/\/twitter.com\/$/,
+      /^https:\/\/twitter.com\/\w+/,
       /^https:\/\/twitter.com\/\w+\/status\/\d+/,
     ];
   }
