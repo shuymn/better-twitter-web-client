@@ -1,0 +1,13 @@
+{
+  "presets": [
+    ["env", {
+      "useBuiltIns": true,
+      "targets": {
+        "browsers": [
+          "last 1 Chrome Versions",
+          "last 1 Firefox Versions"
+        ]
+      }
+    }]
+  ]
+}
