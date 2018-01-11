@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Better Twitter Web Client",
   "description": "A Chrome Extension enhances Twitter with new features.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "shuymn",
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "background": {
