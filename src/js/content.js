@@ -13,11 +13,10 @@ function stop(features) {
 /**
  * Execute features which are executed only once.
  * @param {Function[]} features
+ * @return {Promise}
  */
 function once(features) {
-  features.forEach((feature) => {
-    feature.run();
-  });
+  return Promise.all(features.map(feature => feature.run()));
 }
 
 /**
