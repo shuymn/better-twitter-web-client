@@ -17,11 +17,11 @@ export async function once(features) {
 }
 
 /**
- * Execute features which reside.
+ * Execute features which is permanent.
  * @param {(Array<Function>|Array<Array>)} _features
- * @return {register}
+ * @return {Promise}
  */
-export function resident(_features) {
+export function permanent(_features) {
   /** @param {Object} request */
   async function listener(request) {
     /** @param {Array<Function>} features */
