@@ -1,4 +1,4 @@
-const browser = (typeof browser === 'undefined') ? chrome : browser;
+const browser = (typeof browser === 'undefined') ? chrome : browser; // eslint-disable-line no-use-before-define
 
 export default class TranslationButtonHider {
   /**
