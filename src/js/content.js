@@ -5,12 +5,14 @@ import {
   resident,
 } from './module/content-helper';
 
-// fire
+// "よろしくお願いしまぁぁぁすっ!!" -- Kenji Koiso(Summer Wars)
 
 once([
   TranslationButtonHider,
 ]);
 
 resident([
-  NewTweetLoader,
+  [NewTweetLoader, {
+    onTop: true,
+  }],
 ]);

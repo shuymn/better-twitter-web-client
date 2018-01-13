@@ -29,9 +29,16 @@ export default class NewTweetLoader {
     try {
       const target = document.body.querySelector(selector);
 
-      if (target !== null) {
-        observer.observe(target, options);
+      if (target === null) {
+        throw (new Error(`${selector} is not found.`));
       }
+
+      if (target.firstChild !== null && target.firstChild.nodeName === 'BUTTON') {
+        target.firstChild.click();
+      }
+
+      observer.disconnect(); // singletonize
+      observer.observe(target, options);
 
       return Promise.resolve();
     } catch (e) {
