@@ -8,20 +8,9 @@ function click(node) {
   }
 }
 
-/**
- * Apply callback to added nodes in MutationRecords.
- * @param {MutationRecords[]} records
- * @param {Function} callback
- */
-function map(records, callback) {
-  records.forEach((record) => {
-    record.addedNodes.forEach(callback);
-  });
-}
-
 /** @type {MutationObserver} */
 const observer = new MutationObserver((records) => {
-  map(records, click);
+  records.forEach(record => record.addedNodes.forEach(click));
 });
 
 /** @type {MutationObserverInit} */
