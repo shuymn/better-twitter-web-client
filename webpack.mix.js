@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+const mix = require('laravel-mix'); // eslint-disable-line import/no-extraneous-dependencies
 
 mix.js('./src/js/content.js', './dist/js')
   .js('./src/js/background.js', './dist/js')
