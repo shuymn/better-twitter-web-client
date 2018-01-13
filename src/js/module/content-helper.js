@@ -1,3 +1,5 @@
+const browser = (typeof browser === 'undefined') ? chrome : browser;
+
 /**
  * Stop all features.
  * @param {Array<Function>} features
@@ -108,7 +110,7 @@ export function permanent(_features) {
     onTop(featuresWithOnTop);
   }
 
-  chrome.runtime.onMessage.addListener(listener);
+  browser.runtime.onMessage.addListener(listener);
 
   return Promise.resolve();
 }
