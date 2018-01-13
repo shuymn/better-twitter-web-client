@@ -78,13 +78,13 @@ export function resident(_features) {
     }
 
     /** @type {Array} */
-    const collectFeatures = _features.filter(featureFilter);
+    const correctFeatures = _features.filter(featureFilter);
 
     /** @type {Array<Function>} */
-    const allFeatures = collectFeatures.map(extractFeature);
+    const allFeatures = correctFeatures.map(extractFeature);
 
     /** @type {Array<Function>} */
-    const featuresWithResident = collectFeatures.filter((feature) => {
+    const featuresWithResident = correctFeatures.filter((feature) => {
       if (!Array.isArray(feature)) {
         return true;
       } else if (Object.keys(feature[1]).length === 0) {
@@ -95,7 +95,7 @@ export function resident(_features) {
     }).map(extractFeature);
 
     /** @type {Array<Function>} */
-    const featuresWithOnTop = collectFeatures.filter((feature) => {
+    const featuresWithOnTop = correctFeatures.filter((feature) => {
       if (Array.isArray(feature) && Object.prototype.hasOwnProperty.call(feature[1], 'onTop') && feature[1].onTop) {
         return true;
       }
