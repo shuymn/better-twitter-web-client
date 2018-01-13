@@ -19,16 +19,12 @@ function map(records, callback) {
   });
 }
 
-/**
- * @type {MutationObserver}
- */
+/** @type {MutationObserver} */
 const observer = new MutationObserver((records) => {
   map(records, click);
 });
 
-/**
- * @type {MutationObserverInit}
- */
+/** @type {MutationObserverInit} */
 const options = {
   childList: true,
 };
@@ -69,7 +65,7 @@ export default class NewTweetLoader {
 
   /**
    * List of sites to execute.
-   * @returns {RegExp[]}
+   * @returns {Array<RegExp>}
    */
   static getPatterns() {
     return [
