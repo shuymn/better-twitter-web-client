@@ -8,27 +8,12 @@ function click(node) {
   }
 }
 
-/**
- * Apply callback to added nodes in MutationRecords.
- * @param {MutationRecords[]} records
- * @param {Function} callback
- */
-function map(records, callback) {
-  records.forEach((record) => {
-    record.addedNodes.forEach(callback);
-  });
-}
-
-/**
- * @type {MutationObserver}
- */
+/** @type {MutationObserver} */
 const observer = new MutationObserver((records) => {
-  map(records, click);
+  records.forEach(record => record.addedNodes.forEach(click));
 });
 
-/**
- * @type {MutationObserverInit}
- */
+/** @type {MutationObserverInit} */
 const options = {
   childList: true,
 };
@@ -44,9 +29,16 @@ export default class NewTweetLoader {
     try {
       const target = document.body.querySelector(selector);
 
-      if (target !== null) {
-        observer.observe(target, options);
+      if (target === null) {
+        throw (new Error(`${selector} is not found.`));
       }
+
+      if (target.firstChild !== null && target.firstChild.nodeName === 'BUTTON') {
+        target.firstChild.click();
+      }
+
+      observer.disconnect(); // singletonize
+      observer.observe(target, options);
 
       return Promise.resolve();
     } catch (e) {
@@ -69,7 +61,7 @@ export default class NewTweetLoader {
 
   /**
    * List of sites to execute.
-   * @returns {RegExp[]}
+   * @returns {Array<RegExp>}
    */
   static getPatterns() {
     return [
