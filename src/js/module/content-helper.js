@@ -3,7 +3,7 @@
  * @param {Array<Function>} features
  * @return {Promise<any[]>}
  */
-function stop(features) {
+async function stop(features) {
   return Promise.all(features.map(feature => feature.stop()));
 }
 
@@ -12,7 +12,7 @@ function stop(features) {
  * @param {Array<Function>} features
  * @return {Promise<Array>}
  */
-function once(features) {
+export async function once(features) {
   return Promise.all(features.map(feature => feature.run()));
 }
 
