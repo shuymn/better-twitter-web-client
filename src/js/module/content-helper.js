@@ -102,7 +102,7 @@ export function permanent(_features) {
     browser.runtime.onMessage.addListener((request) => {
       const {
         id,
-      } = browser.extension;
+      } = browser.runtime;
       let element = document.getElementById(id);
 
       if (element === null) {
