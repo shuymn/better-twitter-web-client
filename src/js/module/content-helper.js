@@ -11,15 +11,14 @@ async function stop(features) {
 
 /**
  * @param {Array<Function>} fs - features
- * @param {string} url - current url
  * @return {Promise<Array>}
  */
-async function run(fs, url) {
+async function run(fs) {
   return Promise.all(fs.map((f) => {
     /** @type {Array<RegExp>} */
     const patterns = f.getPatterns();
 
-    if (patterns.some(pattern => pattern.test(url))) {
+    if (patterns.some(pattern => pattern.test(window.location.href))) {
       return f.run();
     }
 
@@ -79,27 +78,25 @@ export function permanent(_features) {
 
   features = features.map(extract);
 
-  browser.runtime.onMessage.addListener(async (request) => {
+  browser.runtime.onMessage.addListener(async () => {
     await stop(features);
-    run(featuresWithPermanent, request.url);
+    run(featuresWithPermanent);
   });
 
   ((fs) => {
-    let currentURL;
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         const offset = entry.boundingClientRect.top;
 
         if (offset === 0) {
-          run(fs, currentURL);
+          run(fs);
         } else if (offset < 0) {
           stop(fs);
         }
       });
     });
 
-    browser.runtime.onMessage.addListener((request) => {
+    browser.runtime.onMessage.addListener(() => {
       const {
         id,
       } = browser.runtime;
@@ -113,9 +110,6 @@ export function permanent(_features) {
         const target = document.getElementById('page-outer');
         target.parentNode.insertBefore(element, target);
       }
-
-      const { url } = request;
-      currentURL = url;
 
       observer.disconnect();
       observer.observe(element);
