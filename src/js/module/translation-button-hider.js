@@ -1,3 +1,5 @@
+const browser = (typeof browser === 'undefined') ? chrome : browser; // eslint-disable-line no-use-before-define
+
 export default class TranslationButtonHider {
   /**
    * Inject a css.
@@ -5,7 +7,7 @@ export default class TranslationButtonHider {
    */
   static run() {
     const link = document.createElement('link');
-    link.href = chrome.extension.getURL('css/content.css');
+    link.href = browser.extension.getURL('css/content.css');
     link.type = 'text/css';
     link.rel = 'stylesheet';
 
