@@ -1,0 +1,8 @@
+sudo: false
+language: node_js
+node_js: "lts/*"
+cache: yarn
+script:
+  - yarn lint
+  - yarn dev
+  - yarn production
