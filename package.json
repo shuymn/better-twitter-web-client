@@ -9,11 +9,22 @@
     "eslint": "^4.15.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
-    "laravel-mix": "^1.7.2"
+    "htmlhint": "^0.9.13",
+    "jlint": "^3.0.2",
+    "laravel-mix": "^1.7.2",
+    "stylelint": "^8.4.0",
+    "stylelint-config-recommended-scss": "^3.0.0",
+    "stylelint-scss": "^2.2.0"
   },
   "scripts": {
     "dev": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "production": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    "production": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "lint": "yarn lint:script && yarn lint:style && yarn lint:static",
+    "lint:script": "eslint src/js",
+    "lint:style": "stylelint 'src/css/**/*.scss'",
+    "lint:static": "yarn lint:json && yarn lint:html",
+    "lint:json": "jlint --glob 'src/static/**/*.json'",
+    "lint:html": "htmlhint src/static/**/*.html"
   }
 }
