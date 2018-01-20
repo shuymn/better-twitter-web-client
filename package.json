@@ -1,11 +1,10 @@
 {
   "name": "better-twitter-web-client",
-  "version": "0.0.1",
-  "description": "A Chrome Extension enhances Twitter with new features.",
-  "main": "src/js/content.js",
+  "version": "1.0.0",
+  "description": "",
   "repository": "https://github.com/shuymn/better-twitter-web-client.git",
   "author": "shuymn <mail@shuymn.me>",
-  "license": "MIT",
+  "private": true,
   "devDependencies": {
     "eslint": "^4.15.0",
     "eslint-config-airbnb-base": "^12.1.0",
