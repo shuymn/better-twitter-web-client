@@ -28,6 +28,6 @@
     "webNavigation"
   ],
   "web_accessible_resources": [
-    "css/content.css"
+    "css/translation-button-hider.css"
   ]
 }
