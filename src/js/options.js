@@ -12,7 +12,7 @@
   const extensionName = getMessage('extName');
 
   // head要素の変更
-  document.head.title = extensionName;
+  (document.head.querySelector('head')).textContent = extensionName;
 
   // headerの中にあるh1タグの中身を変える
   const header = document.getElementById('header-title');
