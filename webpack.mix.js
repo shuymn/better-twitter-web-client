@@ -3,11 +3,11 @@ const mix = require('laravel-mix'); // eslint-disable-line import/no-extraneous-
 mix.js('./src/js/content.js', './dist/js')
   .js('./src/js/background.js', './dist/js')
   .js('./src/js/options.js', './dist/js')
-  .standaloneSass('./src/css/module/translation-button-hider.scss', './dist/css')
   .standaloneSass('./src/css/options.scss', './dist/css')
+  .standaloneSass('./src/css/module/translation-button-hider.scss', './dist/css')
   .copy('./src/static/**/*', './dist')
-  .copy('./src/locale/en/messages.json', './dist/_locales/en')
-  .copy('./src/locale/ja/messages.json', './dist/_locales/ja')
+  .copyDirectory('./src/locale/en', './dist/_locales/en')
+  .copyDirectory('./src/locale/ja', './dist/_locales/ja')
   .disableNotifications();
 
 if (!mix.inProduction()) {
