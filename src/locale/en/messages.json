@@ -1,0 +1,10 @@
+{
+  "extName": {
+    "message": "Better Twitter Web Client",
+    "description": "Name of the extension"
+  },
+  "extDesc": {
+    "message": "A extension enhances Twitter Web Client with new features.",
+    "description": "description of the extension"
+  }
+}
