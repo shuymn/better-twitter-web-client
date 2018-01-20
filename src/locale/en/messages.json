@@ -6,5 +6,21 @@
   "extDesc": {
     "message": "A extension enhances Twitter Web Client with new features.",
     "description": "description of the extension"
+  },
+  "optAboutTitle": {
+    "message": "",
+    "description": ""
+  },
+  "optAboutDesc": {
+    "message": "",
+    "description": ""
+  },
+  "optSettingTitle": {
+    "message": "",
+    "description": ""
+  },
+  "optSettingDesc": {
+    "message": "",
+    "description": ""
   }
 }
