@@ -1,3 +1,7 @@
+import {
+  getValue,
+} from './browser-helper';
+
 const browser = (typeof browser === 'undefined') ? chrome : browser; // eslint-disable-line no-use-before-define
 
 /**
@@ -115,4 +119,36 @@ export function permanent(_features) {
       observer.observe(element);
     });
   })(featuresWithOnTop);
+}
+
+/**
+ * @param {Map<Function, string>} features
+ * @returns {Promise<Array>}
+ */
+export async function getFeatures(features) {
+  const featuresWithOnce = [];
+  const featuresWithPermanent = [];
+
+  // 初回のときのために、対応する値がstorageになくても機能を実行する
+  const values = await Promise.all(Array.from(features.keys())
+    .map(key => getValue(key.name).then(response => [key, response]).catch(() => [key, true])));
+
+  values.forEach((_value) => {
+    if (_value[1] === true) {
+      const key = _value[0];
+      const value = features.get(key);
+
+      if (value === 'once') {
+        featuresWithOnce.push(key);
+      } else if (value === 'permanent') {
+        featuresWithPermanent.push(key);
+      } else if (value === 'onTop') {
+        featuresWithPermanent.push([key, {
+          onTop: true,
+        }]);
+      }
+    }
+  });
+
+  return [featuresWithOnce, featuresWithPermanent];
 }

@@ -3,39 +3,18 @@ import TranslationButtonHider from './module/translation-button-hider';
 import {
   once,
   permanent,
+  getFeatures,
 } from './module/content-helper';
 
-const browser = (typeof browser === 'undefined') ? chrome : browser; // eslint-disable-line no-use-before-define
+const features = new Map([
+  [TranslationButtonHider, 'once'],
+  [NewTweetLoader, 'onTop'],
+]);
 
-const featuresWithOnce = [];
-const featuresWithPermanent = [];
+(async () => {
+  const [featuresWithOnce, featuresWithPermanent] = await getFeatures(features);
 
-const defaults = {
-  NewTweetLoader: true,
-  TranslationButtonHider: true,
-};
-
-browser.storage.sync.get(defaults, (items) => {
-  if (items.NewTweetLoader) {
-    featuresWithPermanent.push([NewTweetLoader, {
-      onTop: true,
-    }]);
-  }
-
-  if (items.TranslationButtonHider) {
-    featuresWithOnce.push(TranslationButtonHider);
-  }
-
+  // "よろしくお願いしまぁぁぁすっ!!" -- Kenji Koiso(Summer Wars)
   once(featuresWithOnce);
   permanent(featuresWithPermanent);
-});
-
-
-// "よろしくお願いしまぁぁぁすっ!!" -- Kenji Koiso(Summer Wars)
-
-// once(featuresWithOnce);
-// permanent(featuresWithPermanent);
-
-// [NewTweetLoader, {
-//   onTop: true,
-// }],
+})();
