@@ -18,7 +18,9 @@ deploy:
   file_glob: true
   file: "$TRAVIS_BUILD_DIR/dist/*.zip"
   skip_cleanup: true
+  name: $TRAVIS_TAG
   on:
     repo: shuymn/better-twitter-web-client
-    all_branches: true
+    branch: master
     tags: true
+    condition: "$TRAVIS_TAG =~ ^v[0-9]+.[0-9]+.[0-9]+$"
