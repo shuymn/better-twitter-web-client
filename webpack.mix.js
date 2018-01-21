@@ -2,8 +2,13 @@ const mix = require('laravel-mix'); // eslint-disable-line import/no-extraneous-
 
 mix.js('./src/js/content.js', './dist/js')
   .js('./src/js/background.js', './dist/js')
-  .sass('src/css/content.scss', './dist/css')
-  .copy('./src/static/**/*', './dist');
+  .js('./src/js/options.js', './dist/js')
+  .standaloneSass('./src/css/options.scss', './dist/css')
+  .standaloneSass('./src/css/module/translation-button-hider.scss', './dist/css')
+  .copy('./src/static/**/*', './dist')
+  .copyDirectory('./src/locale/en', './dist/_locales/en')
+  .copyDirectory('./src/locale/ja', './dist/_locales/ja')
+  .disableNotifications();
 
 if (!mix.inProduction()) {
   mix.sourceMaps();

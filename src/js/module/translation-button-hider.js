@@ -7,7 +7,7 @@ export default class TranslationButtonHider {
    */
   static run() {
     const link = document.createElement('link');
-    link.href = browser.extension.getURL('css/content.css');
+    link.href = browser.extension.getURL('css/translation-button-hider.css');
     link.type = 'text/css';
     link.rel = 'stylesheet';
 

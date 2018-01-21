@@ -1,0 +1,34 @@
+{
+  "extName": {
+    "message": "Better Twitter Web Client",
+    "description": "拡張機能の名前"
+  },
+  "extDesc": {
+    "message": "Twitter Web Clientに機能を追加する拡張機能。",
+    "description": "拡張機能の説明"
+  },
+  "optAboutTitle": {
+    "message": "拡張機能について",
+    "description": "オプションページの拡張機能の説明をする部分のタイトル"
+  },
+  "optAboutDesc": {
+    "message": "",
+    "description": "オプションページの拡張機能の説明をする部分の説明"
+  },
+  "optSettingTitle": {
+    "message": "設定",
+    "description": "オプションページの拡張機能の設定をする部分のタイトル"
+  },
+  "optSettingDesc": {
+    "message": "設定の変更はページを更新すると反映されます。",
+    "description": "オプションページの拡張機能の設定をする部分の説明"
+  },
+  "optSettingLabelOfNewTweetLoader": {
+    "message": "「新しいツイート」が表示されたとき、自動でクリックして新しいツイートを読み込む",
+    "description": "オプションページの拡張機能の設定をする部分の設定項目のNewTweetLoaderに関する項目"
+  },
+  "optSettingLabelOfTranslationButtonHider": {
+    "message": "「○○語から翻訳」ボタンを隠す",
+    "description": "オプションページの拡張機能の設定をする部分の設定項目のTranslationButtonHiderに関する項目"
+  }
+}

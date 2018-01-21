@@ -1,0 +1,34 @@
+{
+  "extName": {
+    "message": "Better Twitter Web Client",
+    "description": "Name of the extension"
+  },
+  "extDesc": {
+    "message": "A extension enhances Twitter Web Client with new features.",
+    "description": "description of the extension"
+  },
+  "optAboutTitle": {
+    "message": "About",
+    "description": "title of about in options page"
+  },
+  "optAboutDesc": {
+    "message": "",
+    "description": "description of about in options page"
+  },
+  "optSettingTitle": {
+    "message": "Setting",
+    "description": "title of setting in options page"
+  },
+  "optSettingDesc": {
+    "message": "It is necessary to reload the page for the changes to take effect.",
+    "description": "description of setting in options page"
+  },
+  "optSettingLabelOfNewTweetLoader": {
+    "message": "Load 'See next Tweets' automatically when at the page top",
+    "description": "setting abount NewTweetLoader in options page"
+  },
+  "optSettingLabelOfTranslationButtonHider": {
+    "message": "Hide 'Translate from (Other Languages)' button",
+    "description": "setting about TranslationButtonHider in options page"
+  }
+}
