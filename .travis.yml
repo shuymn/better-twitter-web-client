@@ -5,9 +5,9 @@ cache: yarn
 
 stages:
   - name: test
-    if: (type IS pull_request) AND (type NOT push)
+    if: type = pull_request
   - name: release
-    if: (branch IS master) AND (type IS push) AND (type NOT pull_request)
+    if: (branch = master) AND (type = push)
 
 jobs:
   include:
