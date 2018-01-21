@@ -9,9 +9,9 @@ async function getMessage(messageName) {
 
   if (response === '') {
     throw new Error(`${messageName} is not defined.`);
-  } else {
-    return response;
   }
+
+  return response;
 }
 
 /**
@@ -29,10 +29,10 @@ async function getValue(key) {
 
   browser.storage.sync.get(key, (item) => {
     if (Object.keys(item).length === 0) {
-      reject(`${key} is not stored.`);
-    } else {
-      resolve(item[key]);
+      reject(new Error(`${key} is not stored.`));
     }
+
+    resolve(item[key]);
   });
 
   return promise;
@@ -52,7 +52,7 @@ export async function setTextContent(messageName, key) {
 
   target.textContent = await getMessage(messageName);
 
-  return Promise.resolve(key);
+  return key;
 }
 
 /**
