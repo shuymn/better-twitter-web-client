@@ -2,25 +2,37 @@ sudo: false
 language: node_js
 node_js: "lts/*"
 cache: yarn
-script:
-  - yarn lint
-  - yarn dev
-  - yarn production
-before_deploy:
-  - rm -rf $TRAVIS_BUILD_DIR/dist/*
-  - yarn production
-  - cd $TRAVIS_BUILD_DIR/dist
-  - zip -r better-twitter-web-client.zip .
-deploy:
-  provider: releases
-  api_key:
-    secure: LVv9ukrebWEyTXZ2YhaKSbOE+sZZDX+OC1u+TBFmwi0d/KI6KbIB8v2ATyg2YWkdpFF5UPxSEqsqEKayKyFwm46BkT3FQ06EYLZnMf8CY8R5INNQ4aWEzfKZTXPZyqAQOfnw+07JQ1AFDIWmGfEFjKJKAa9tAJfPIO3I6M0Ws9U1xTuym/HrpZMKFx+LivB5NfUMwClJSjHopFVlxOaTZNt5j1rCjivdBt1cZ/utulqFFRnZjp8EczSFinPwrDHY75A8i1vuWqlUdZhh4tIKhSp1OqPyZzS7SDfvjH26LuYNdugEXWeO1fQIW70zo7JSKp06WkfbLDTlkxBS0sg9RYbejgDfcGf4Dl+JYkfRxtJgTrAZjbyh4bQP5yQZhhzRampe1q5R1LXrT2pPFGIcpIxEpJ9ynmMzZR+E/2KAQqb0nYS4ySzQnubAXntlkcssMCNjk+aGW4ciRTAwSjphsX05jlzWdM/ndxnCY7kPHXT97E8uwb4oUfKLsXG4KziYrh6UeC4/XdZV+6sGu1YlV4H11XB48Odv7LA0wxeAHHYE0k/EitiqD7ek1xYbakrX8Qntdrx9vd/8JOyiOBzC0ZWxS9UGN6UKR1MJvG75+Bkfo0gzqdMIxToS19qT4kLO646uiYfzv80TH/qzAq7QCmC3Uuok6iDFIG55+xaGVx4=
-  file_glob: true
-  file: "$TRAVIS_BUILD_DIR/dist/*.zip"
-  skip_cleanup: true
-  name: $TRAVIS_TAG
-  on:
-    repo: shuymn/better-twitter-web-client
-    branch: master
-    tags: true
-    condition: "$TRAVIS_TAG =~ ^v[0-9]+.[0-9]+.[0-9]+$"
+
+stages:
+  - name: test
+    if: type IS pull_request
+  - name: release
+    if: type IS push
+
+jobs:
+  include:
+    - stage: test
+      script:
+        - yarn lint
+        - yarn dev
+        - yarn production
+    - stage: release
+      script: skip
+      before_deploy:
+        - rm -rf $TRAVIS_BUILD_DIR/dist/*
+        - yarn production
+        - cd $TRAVIS_BUILD_DIR/dist
+        - zip -r better-twitter-web-client.zip .
+      deploy:
+        provider: releases
+        api_key:
+          secure: LVv9ukrebWEyTXZ2YhaKSbOE+sZZDX+OC1u+TBFmwi0d/KI6KbIB8v2ATyg2YWkdpFF5UPxSEqsqEKayKyFwm46BkT3FQ06EYLZnMf8CY8R5INNQ4aWEzfKZTXPZyqAQOfnw+07JQ1AFDIWmGfEFjKJKAa9tAJfPIO3I6M0Ws9U1xTuym/HrpZMKFx+LivB5NfUMwClJSjHopFVlxOaTZNt5j1rCjivdBt1cZ/utulqFFRnZjp8EczSFinPwrDHY75A8i1vuWqlUdZhh4tIKhSp1OqPyZzS7SDfvjH26LuYNdugEXWeO1fQIW70zo7JSKp06WkfbLDTlkxBS0sg9RYbejgDfcGf4Dl+JYkfRxtJgTrAZjbyh4bQP5yQZhhzRampe1q5R1LXrT2pPFGIcpIxEpJ9ynmMzZR+E/2KAQqb0nYS4ySzQnubAXntlkcssMCNjk+aGW4ciRTAwSjphsX05jlzWdM/ndxnCY7kPHXT97E8uwb4oUfKLsXG4KziYrh6UeC4/XdZV+6sGu1YlV4H11XB48Odv7LA0wxeAHHYE0k/EitiqD7ek1xYbakrX8Qntdrx9vd/8JOyiOBzC0ZWxS9UGN6UKR1MJvG75+Bkfo0gzqdMIxToS19qT4kLO646uiYfzv80TH/qzAq7QCmC3Uuok6iDFIG55+xaGVx4=
+        file_glob: true
+        file: "$TRAVIS_BUILD_DIR/dist/*.zip"
+        skip_cleanup: true
+        name: $TRAVIS_TAG
+        on:
+          repo: shuymn/better-twitter-web-client
+          branch: master
+          tags: true
+          condition: "$TRAVIS_TAG =~ ^v[0-9]+.[0-9]+.[0-9]+$"
