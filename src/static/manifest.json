@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "author": "shuymn",
   "default_locale": "en",
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'",
   "options_page": "options.html",
   "background": {
     "page": "background.html",
