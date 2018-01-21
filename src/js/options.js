@@ -21,7 +21,6 @@ const checkboxes = {
   TranslationButtonHider: 'optSettingLabelOfTranslationButtonHider',
 };
 
-
 Object.keys(checkboxes)
   .map(key => setCheckbox(checkboxes[key], key))
   .reduce((chain, checkboxPromise) => chain.then(() => checkboxPromise), Promise.resolve());
