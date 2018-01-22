@@ -10,17 +10,9 @@ body {
 
 #container {
   width: 600px;
-  margin-left: 10px;
+  margin: 0 10px;
   display: flex;
   flex-direction: column;
-}
-
-header {
-  height: 70px;
-  padding-left: 20px;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid #ccc;
 }
 
 #about {

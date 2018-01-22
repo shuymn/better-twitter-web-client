@@ -1,5 +1,7 @@
 dist/
+build/
 node_modules/
 
 .DS_Store
+.node-version
 mix-manifest.json
