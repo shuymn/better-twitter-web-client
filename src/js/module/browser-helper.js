@@ -27,12 +27,17 @@ export async function getValue(key) {
     [resolve, reject] = [_resolve, _reject];
   });
 
-  browser.storage.sync.get(key, (item) => {
-    if (Object.keys(item).length === 0) {
-      reject(new Error(`${key} is not stored.`));
-    }
+  const features = {
+    NewTweetLoader: true,
+    TranslationButtonHider: true,
+  };
 
-    resolve(item[key]);
+  browser.storage.sync.get(features, (items) => {
+    if (typeof items[key] === 'undefined') {
+      reject(new Error(`${key} is not stored.`));
+    } else {
+      resolve(items[key]);
+    }
   });
 
   return promise;
