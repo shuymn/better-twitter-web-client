@@ -7,6 +7,11 @@ A extension enhances Twitter with new features.
 - Load "See next Tweets" automatically when at the page top
 - Hide "Translate from (Other Languages)" button
 
+## Installation
+
+- [Chrome Web Store](https://chrome.google.com/webstore/detail/better-twitter-web-client/fembdalbpiddhponbndkaoiocipmdjnd)
+- [Firefox Add-ons](https://addons.mozilla.org/firefox/addon/better-twitter-web-client)
+
 ## License
 
 MIT Licence
