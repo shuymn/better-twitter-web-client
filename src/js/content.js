@@ -6,10 +6,10 @@ import {
   getFeatures,
 } from './module/content-helper';
 
-const features = new Map([
-  [TranslationButtonHider, 'once'],
-  [NewTweetLoader, 'onTop'],
-]);
+const features = {
+  TranslationButtonHider: [TranslationButtonHider, 'once'],
+  NewTweetLoader: [NewTweetLoader, 'onTop'],
+};
 
 (async () => {
   const [featuresWithOnce, featuresWithPermanent] = await getFeatures(features);
