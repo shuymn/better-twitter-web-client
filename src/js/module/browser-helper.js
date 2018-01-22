@@ -27,12 +27,12 @@ export async function getValue(key) {
     [resolve, reject] = [_resolve, _reject];
   });
 
-  const features = {
-    NewTweetLoader: true,
+  const defaults = {
     TranslationButtonHider: true,
+    NewTweetLoader: true,
   };
 
-  browser.storage.sync.get(features, (items) => {
+  browser.storage.sync.get(defaults, (items) => {
     if (typeof items[key] === 'undefined') {
       reject(new Error(`${key} is not stored.`));
     } else {
