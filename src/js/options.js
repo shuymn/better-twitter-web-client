@@ -5,7 +5,6 @@ import {
 
 const contents = {
   'head > title': 'extName',
-  '#header-title': 'extName',
   '#about-title': 'optAboutTitle',
   '#setting-title': 'optSettingTitle',
   '#about-description': 'extDesc',
