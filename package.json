@@ -11,7 +11,7 @@
     "production": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "lint": "yarn lint:script && yarn lint:style && yarn lint:html && yarn lint:json && yarn lint:text",
     "lint:script": "yarn eslint && yarn eslint:prettier",
-    "lint:style": "yarn stylelint ** yarn stylelint:prettier",
+    "lint:style": "yarn stylelint && yarn stylelint:prettier",
     "lint:html": "find ./src -name '*.html' -print0 | xargs -0 markuplint -p",
     "lint:json": "prettier -l 'src/**/*.json'",
     "lint:text": "textlint README.md && textlint 'src/**/*.{md,txt,html}'",
