@@ -1,14 +1,11 @@
-import {
-  setTextContent,
-  setCheckbox,
-} from './module/options-helper';
+import { setTextContent, setCheckbox } from "./module/options-helper";
 
 const contents = {
-  'head > title': 'extName',
-  '#about-title': 'optAboutTitle',
-  '#setting-title': 'optSettingTitle',
-  '#about-description': 'extDesc',
-  '#setting-description': 'optSettingDesc',
+  "head > title": "extName",
+  "#about-title": "optAboutTitle",
+  "#setting-title": "optSettingTitle",
+  "#about-description": "extDesc",
+  "#setting-description": "optSettingDesc"
 };
 
 Object.keys(contents)
@@ -16,8 +13,8 @@ Object.keys(contents)
   .reduce((chain, contentPromise) => chain.then(() => contentPromise), Promise.resolve());
 
 const checkboxes = {
-  NewTweetLoader: 'optSettingLabelOfNewTweetLoader',
-  TranslationButtonHider: 'optSettingLabelOfTranslationButtonHider',
+  NewTweetLoader: "optSettingLabelOfNewTweetLoader",
+  TranslationButtonHider: "optSettingLabelOfTranslationButtonHider"
 };
 
 Object.keys(checkboxes)

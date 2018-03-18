@@ -3,22 +3,22 @@
  * @param {Node} node
  */
 function click(node) {
-  if (node.nodeName === 'BUTTON') {
+  if (node.nodeName === "BUTTON") {
     node.click();
   }
 }
 
 /** @type {MutationObserver} */
-const observer = new MutationObserver((records) => {
+const observer = new MutationObserver(records => {
   records.forEach(record => record.addedNodes.forEach(click));
 });
 
 /** @type {MutationObserverInit} */
 const options = {
-  childList: true,
+  childList: true
 };
 
-const selector = '.js-new-items-bar-container';
+const selector = ".js-new-items-bar-container";
 
 export default class NewTweetLoader {
   /**
@@ -30,10 +30,10 @@ export default class NewTweetLoader {
       const target = document.body.querySelector(selector);
 
       if (target === null) {
-        throw (new Error(`${selector} is not found.`));
+        throw new Error(`${selector} is not found.`);
       }
 
-      if (target.firstChild !== null && target.firstChild.nodeName === 'BUTTON') {
+      if (target.firstChild !== null && target.firstChild.nodeName === "BUTTON") {
         target.firstChild.click();
       }
 
@@ -64,10 +64,6 @@ export default class NewTweetLoader {
    * @returns {Array<RegExp>}
    */
   static getPatterns() {
-    return [
-      /^https:\/\/twitter.com\/$/,
-      /^https:\/\/twitter.com\/\w+$/,
-      /^https:\/\/twitter.com\/\w+\/status\/\d+$/,
-    ];
+    return [/^https:\/\/twitter.com\/$/, /^https:\/\/twitter.com\/\w+$/, /^https:\/\/twitter.com\/\w+\/status\/\d+$/];
   }
 }

@@ -1,27 +1,32 @@
+/* stylelint-disable selector-max-id, max-nesting-depth, selector-max-compound-selectors */
+/* TODO: BEM対応 */
+
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
-  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
 
 #container {
-  width: 600px;
-  margin: 0 10px;
   display: flex;
   flex-direction: column;
+  margin: 0 10px;
+  width: 600px;
 }
 
 #about {
+  border-bottom: 1px solid #ccc;
   flex: 1;
   padding: 20px 10px 20px 20px;
-  border-bottom: 1px solid #ccc;
+
   #about-title {
     margin-bottom: 10px;
   }
+
   #about-container {
     padding-left: 10px;
   }
@@ -30,14 +35,18 @@ body {
 #setting {
   flex: 2;
   padding: 20px 10px 20px 20px;
+
   #setting-title {
     margin-bottom: 10px;
   }
+
   #setting-container {
     padding-left: 10px;
+
     #setting-description {
       margin-bottom: 10px;
     }
+
     #setting-list {
       padding-left: 5px;
 

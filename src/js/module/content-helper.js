@@ -1,8 +1,6 @@
-import {
-  getValue,
-} from './browser-helper';
+import { getValue } from "./browser-helper";
 
-const browser = (typeof browser === 'undefined') ? chrome : browser; // eslint-disable-line no-use-before-define
+const browser = typeof browser === "undefined" ? chrome : browser; // eslint-disable-line no-use-before-define
 
 /**
  * Stop all features.
@@ -18,23 +16,25 @@ async function stop(features) {
  * @return {Promise<Array>}
  */
 async function run(fs) {
-  return Promise.all(fs.map((f) => {
-    /** @type {Array<RegExp>} */
-    const patterns = f.getPatterns();
+  return Promise.all(
+    fs.map(f => {
+      /** @type {Array<RegExp>} */
+      const patterns = f.getPatterns();
 
-    if (patterns.some(pattern => pattern.test(window.location.href))) {
-      return f.run();
-    }
+      if (patterns.some(pattern => pattern.test(window.location.href))) {
+        return f.run();
+      }
 
-    return Promise.resolve();
-  }));
+      return Promise.resolve();
+    })
+  );
 }
 
 /** @param {(Function|Array)} feature */
 function filter(feature) {
-  if (typeof feature === 'function') {
+  if (typeof feature === "function") {
     return true;
-  } else if (Array.isArray(feature) && typeof feature[0] === 'function' && feature[1] instanceof Object) {
+  } else if (Array.isArray(feature) && typeof feature[0] === "function" && feature[1] instanceof Object) {
     return true;
   }
   return false;
@@ -62,23 +62,27 @@ export async function once(features) {
 export function permanent(_features) {
   let features = _features.filter(filter);
 
-  const featuresWithPermanent = features.filter((feature) => {
-    if (!Array.isArray(feature)) {
-      return true;
-    } else if (Object.keys(feature[1]).length === 0) {
-      return true;
-    }
+  const featuresWithPermanent = features
+    .filter(feature => {
+      if (!Array.isArray(feature)) {
+        return true;
+      } else if (Object.keys(feature[1]).length === 0) {
+        return true;
+      }
 
-    return false;
-  }).map(extract);
+      return false;
+    })
+    .map(extract);
 
-  const featuresWithOnTop = features.filter((feature) => {
-    if (Array.isArray(feature) && Object.prototype.hasOwnProperty.call(feature[1], 'onTop') && feature[1].onTop) {
-      return true;
-    }
+  const featuresWithOnTop = features
+    .filter(feature => {
+      if (Array.isArray(feature) && Object.prototype.hasOwnProperty.call(feature[1], "onTop") && feature[1].onTop) {
+        return true;
+      }
 
-    return false;
-  }).map(extract);
+      return false;
+    })
+    .map(extract);
 
   features = features.map(extract);
 
@@ -87,9 +91,9 @@ export function permanent(_features) {
     run(featuresWithPermanent);
   });
 
-  ((fs) => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+  (fs => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
         const offset = entry.boundingClientRect.top;
 
         if (offset === 0) {
@@ -101,17 +105,15 @@ export function permanent(_features) {
     });
 
     browser.runtime.onMessage.addListener(() => {
-      const {
-        id,
-      } = browser.runtime;
+      const { id } = browser.runtime;
       let element = document.getElementById(id);
 
       if (element === null) {
-        element = document.createElement('div');
-        element.style = 'height: 1px;';
+        element = document.createElement("div");
+        element.style = "height: 1px;";
         element.id = id;
 
-        const target = document.getElementById('page-outer');
+        const target = document.getElementById("page-outer");
         target.parentNode.insertBefore(element, target);
       }
 
@@ -130,21 +132,23 @@ export async function getFeatures(features) {
   const featuresWithPermanent = [];
 
   // 初回のときのために、対応する値がstorageになくても機能を実行する
-  const values = await Promise.all(Object.keys(features)
-    .map(async key => [key, await getValue(key)]));
+  const values = await Promise.all(Object.keys(features).map(async key => [key, await getValue(key)]));
 
-  values.forEach((_value) => {
+  values.forEach(_value => {
     if (_value[1] === true) {
       const [key, value] = features[_value[0]];
 
-      if (value === 'once') {
+      if (value === "once") {
         featuresWithOnce.push(key);
-      } else if (value === 'permanent') {
+      } else if (value === "permanent") {
         featuresWithPermanent.push(key);
-      } else if (value === 'onTop') {
-        featuresWithPermanent.push([key, {
-          onTop: true,
-        }]);
+      } else if (value === "onTop") {
+        featuresWithPermanent.push([
+          key,
+          {
+            onTop: true
+          }
+        ]);
       }
     }
   });

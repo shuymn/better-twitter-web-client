@@ -1,9 +1,6 @@
-import {
-  getMessage,
-  getValue,
-} from './browser-helper';
+import { getMessage, getValue } from "./browser-helper";
 
-const browser = (typeof browser === 'undefined') ? chrome : browser; // eslint-disable-line no-use-before-define
+const browser = typeof browser === "undefined" ? chrome : browser; // eslint-disable-line no-use-before-define
 
 /**
  * @param {string} messageName
@@ -28,17 +25,17 @@ export async function setTextContent(messageName, key) {
  * @returns {Promise<any>}
  */
 export async function setCheckbox(messageName, key) {
-  const instance = document.getElementById('setting-template').content.cloneNode(true);
-  const input = instance.querySelector('input');
+  const instance = document.getElementById("setting-template").content.cloneNode(true);
+  const input = instance.querySelector("input");
 
-  instance.querySelector('label').textContent = await getMessage(messageName);
+  instance.querySelector("label").textContent = await getMessage(messageName);
   input.checked = await getValue(key);
 
-  input.addEventListener('click', (e) => {
+  input.addEventListener("click", e => {
     browser.storage.sync.set({
-      [key]: e.target.checked,
+      [key]: e.target.checked
     });
   });
 
-  return document.getElementById('setting-list').appendChild(instance);
+  return document.getElementById("setting-list").appendChild(instance);
 }

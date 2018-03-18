@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "__MSG_extName__",
   "description": "__MSG_extDesc__",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "shuymn",
   "default_locale": "en",
   "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'",
@@ -10,23 +10,14 @@
     "page": "background.html",
     "persistent": false
   },
-  "content_scripts": [{
-    "matches": [
-      "https://twitter.com/*"
-    ],
-    "js": [
-      "js/content.js"
-    ]
-  }],
-  "permissions": [
-    "https://twitter.com/*",
-    "storage",
-    "tabs",
-    "webNavigation"
+  "content_scripts": [
+    {
+      "matches": ["https://twitter.com/*"],
+      "js": ["js/content.js"]
+    }
   ],
-  "web_accessible_resources": [
-    "css/translation-button-hider.css"
-  ],
+  "permissions": ["https://twitter.com/*", "storage", "tabs", "webNavigation"],
+  "web_accessible_resources": ["css/translation-button-hider.css"],
   "options_ui": {
     "page": "options.html"
   }
