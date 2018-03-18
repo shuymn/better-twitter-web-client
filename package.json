@@ -1,21 +1,10 @@
 {
   "name": "better-twitter-web-client",
-  "version": "1.0.0",
   "description": "",
+  "version": "1.0.0",
   "repository": "https://github.com/shuymn/better-twitter-web-client.git",
   "author": "shuymn <mail@shuymn.me>",
   "private": true,
-  "devDependencies": {
-    "eslint": "^4.15.0",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.8.0",
-    "htmlhint": "^0.9.13",
-    "jlint": "^3.0.2",
-    "laravel-mix": "^1.7.2",
-    "stylelint": "^8.4.0",
-    "stylelint-config-recommended-scss": "^3.0.0",
-    "stylelint-scss": "^2.2.0"
-  },
   "scripts": {
     "dev": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
@@ -25,6 +14,100 @@
     "lint:style": "stylelint 'src/css/**/*.scss'",
     "lint:static": "yarn lint:json && yarn lint:html",
     "lint:json": "jlint --glob 'src/static/**/*.json'",
-    "lint:html": "htmlhint src/static/**/*.html"
+    "lint:html": "htmlhint 'src/static/**/*.html'",
+    "commitmsg": "commitlint -e $GIT_PARAMS",
+    "precommit": "lint-staged"
+  },
+  "browserslist": [
+    "last 1 Chrome Versions",
+    "last 1 Firefox Versions"
+  ],
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "useBuiltIns": true
+        }
+      ]
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "airbnb-base",
+      "plugin:prettier/recommended"
+    ],
+    "env": {
+      "browser": true
+    },
+    "globals": {
+      "chrome": true
+    }
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "eslint"
+    ],
+    "src/**/*.scss": [
+      "stylelint"
+    ],
+    "src/**/*.json": [
+      "prettier -l"
+    ],
+    "src/**/*.html": [
+      "markuplint",
+      "textlint"
+    ],
+    "src/**/*.{md,txt}": [
+      "textlint"
+    ]
+  },
+  "markuplint": {
+    "extends": "markuplint/html-ls",
+    "rules": {
+      "deprecated-element": true,
+      "parse-error": true
+    }
+  },
+  "prettier": {
+    "printWidth": 120
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-sass-guidelines",
+      "./node_modules/prettier-stylelint/config.js"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^6.1.3",
+    "@commitlint/config-conventional": "^6.1.3",
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "husky": "^0.14.3",
+    "laravel-mix": "^2.1.8",
+    "lint-staged": "^7.0.0",
+    "markuplint": "^0.27.0",
+    "prettier": "^1.11.1",
+    "prettier-eslint": "^8.8.1",
+    "prettier-eslint-cli": "^4.7.1",
+    "prettier-stylelint": "^0.4.2",
+    "stylelint": "^9.1.3",
+    "stylelint-config-prettier": "^3.0.4",
+    "stylelint-config-recommended-scss": "^3.0.0",
+    "stylelint-config-sass-guidelines": "^5.0.0",
+    "stylelint-scss": "^2.2.0",
+    "textlint": "^10.1.4",
+    "textlint-plugin-html": "^0.1.7",
+    "textlint-rule-common-misspellings": "^1.0.1",
+    "textlint-rule-preset-japanese": "^4.0.0",
+    "textlint-rule-terminology": "^1.1.27"
   }
 }
