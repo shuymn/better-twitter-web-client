@@ -1,0 +1,10 @@
+{
+  "plugins": [
+    "html"
+  ],
+  "rules": {
+    "common-misspellings": true,
+    "preset-japanese": true,
+    "terminology": true
+  }
+}
