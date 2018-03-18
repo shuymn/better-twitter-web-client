@@ -9235,16 +9235,6 @@ stylelint-config-prettier@^3.0.4:
   dependencies:
     stylelint "^9.1.1"
 
-stylelint-config-recommended-scss@^3.0.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/stylelint-config-recommended-scss/-/stylelint-config-recommended-scss-3.1.0.tgz#25b8511074420615cce18de812b21b2aba13a29f"
-  dependencies:
-    stylelint-config-recommended "^2.0.0"
-
-stylelint-config-recommended@^2.0.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/stylelint-config-recommended/-/stylelint-config-recommended-2.1.0.tgz#f526d5c771c6811186d9eaedbed02195fee30858"
-
 stylelint-config-sass-guidelines@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/stylelint-config-sass-guidelines/-/stylelint-config-sass-guidelines-5.0.0.tgz#529fc101f4a15da3c54e66efdd9d79abc01668f7"
