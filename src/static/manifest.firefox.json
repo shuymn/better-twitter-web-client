@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "__MSG_extName__",
   "description": "__MSG_extDesc__",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "shuymn",
   "default_locale": "en",
   "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'",
