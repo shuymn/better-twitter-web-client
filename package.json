@@ -19,7 +19,7 @@
     "eslint:prettier": "prettier-eslint --list-different 'src/**/*.js'",
     "eslint:fix": "prettier-eslint --write 'src/**/*.js'",
     "stylelint": "stylelint 'src/**/*.scss'",
-    "stylelint:prettier": "prettier-stylelint --list-different 'src/**/*.scss'",
+    "stylelint:prettier": "prettier-stylelint --quiet 'src/**/*.scss'",
     "stylelint:fix": "prettier-stylelint --write 'src/**/*.scss'",
     "commitmsg": "echo $GIT_PARAMS | textlint --stdin && commitlint -e $GIT_PARAMS",
     "precommit": "lint-staged"
