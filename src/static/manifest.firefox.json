@@ -9,23 +9,14 @@
   "background": {
     "page": "background.html"
   },
-  "content_scripts": [{
-    "matches": [
-      "https://twitter.com/*"
-    ],
-    "js": [
-      "js/content.js"
-    ]
-  }],
-  "permissions": [
-    "https://twitter.com/*",
-    "storage",
-    "tabs",
-    "webNavigation"
+  "content_scripts": [
+    {
+      "matches": ["https://twitter.com/*"],
+      "js": ["js/content.js"]
+    }
   ],
-  "web_accessible_resources": [
-    "css/translation-button-hider.css"
-  ],
+  "permissions": ["https://twitter.com/*", "storage", "tabs", "webNavigation"],
+  "web_accessible_resources": ["css/translation-button-hider.css"],
   "options_ui": {
     "page": "options.html"
   },

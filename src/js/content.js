@@ -1,14 +1,10 @@
-import NewTweetLoader from './module/new-tweet-loader';
-import TranslationButtonHider from './module/translation-button-hider';
-import {
-  once,
-  permanent,
-  getFeatures,
-} from './module/content-helper';
+import NewTweetLoader from "./module/new-tweet-loader";
+import TranslationButtonHider from "./module/translation-button-hider";
+import { once, permanent, getFeatures } from "./module/content-helper";
 
 const features = {
-  TranslationButtonHider: [TranslationButtonHider, 'once'],
-  NewTweetLoader: [NewTweetLoader, 'onTop'],
+  TranslationButtonHider: [TranslationButtonHider, "once"],
+  NewTweetLoader: [NewTweetLoader, "onTop"]
 };
 
 (async () => {

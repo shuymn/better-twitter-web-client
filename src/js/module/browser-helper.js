@@ -1,4 +1,4 @@
-const browser = (typeof browser === 'undefined') ? chrome : browser; // eslint-disable-line no-use-before-define
+const browser = typeof browser === "undefined" ? chrome : browser; // eslint-disable-line no-use-before-define
 
 /**
  * @param {string} messageName
@@ -7,7 +7,7 @@ const browser = (typeof browser === 'undefined') ? chrome : browser; // eslint-d
 export async function getMessage(messageName) {
   const response = browser.i18n.getMessage(messageName);
 
-  if (response === '') {
+  if (response === "") {
     throw new Error(`${messageName} is not defined.`);
   }
 
@@ -29,11 +29,11 @@ export async function getValue(key) {
 
   const defaults = {
     TranslationButtonHider: true,
-    NewTweetLoader: true,
+    NewTweetLoader: true
   };
 
-  browser.storage.sync.get(defaults, (items) => {
-    if (typeof items[key] === 'undefined') {
+  browser.storage.sync.get(defaults, items => {
+    if (typeof items[key] === "undefined") {
       reject(new Error(`${key} is not stored.`));
     } else {
       resolve(items[key]);
